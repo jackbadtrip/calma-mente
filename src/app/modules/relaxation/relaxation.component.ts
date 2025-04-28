@@ -157,6 +157,9 @@ export class RelaxationComponent {
   activeExercise: RelaxationExercise | null = null;
   remainingTime: number = 0;
   progressValue: number = 100;
+  progressValue2: number = 100;
+  progressValue3: number = 100;
+  progressValue4: number = 100;
   isTimerRunning: boolean = false;
   timerInterval: any;
   

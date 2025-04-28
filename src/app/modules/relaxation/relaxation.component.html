@@ -62,7 +62,7 @@
                 <button mat-icon-button color="primary" (click)="toggleSound(sound)" class="play-button">
                   <mat-icon>{{ isPlayingSound(sound) ? 'pause' : 'play_arrow' }}</mat-icon>
                 </button>
-                <mat-slider min="0" max="1" step="0.01" class="volume-slider" [disabled]="!isPlayingSound(sound)">
+                <mat-slider min="0" max="1" step="0.01" class="volume-slider" [disabled]="true">
                   <input matSliderThumb [(ngModel)]="soundVolume" (ngModelChange)="updateVolume($event)">
                 </mat-slider>
               </div>
