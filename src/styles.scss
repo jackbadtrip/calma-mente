@@ -1,0 +1,173 @@
+/* Global Styles for CalmaMente Application */
+
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Main color palette */
+  --primary-light: #98CAED;
+  --primary: #5DA9E9;
+  --primary-dark: #29507F;
+  
+  --secondary-light: #FEBDC5;
+  --secondary: #F58FA0;
+  --secondary-dark: #F9A2AB;
+  
+  /* Neutral colors */
+  --neutral-lightest: #FFFFFF;
+  --neutral-light: #F5F7FA;
+  --neutral-medium: #E1E5EB;
+  --neutral-dark: #6E7A8A;
+  --neutral-darkest: #334155;
+  
+  /* Functional colors */
+  --success: #4CAF50;
+  --warning: #FFB74D;
+  --error: #E57373;
+  
+  /* Spacing system (based on 8px) */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-xxl: 48px;
+  
+  /* Typography */
+  --font-family: 'Montserrat', sans-serif;
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 20px;
+  --font-size-xl: 24px;
+  --font-size-xxl: 32px;
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.1);
+  
+  /* Border radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+}
+
+html, body {
+  height: 100%;
+  font-family: var(--font-family);
+  font-size: var(--font-size-md);
+  line-height: 1.5;
+  color: var(--neutral-darkest);
+  background-color: var(--neutral-light);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: var(--space-md);
+  line-height: 1.2;
+  font-weight: 600;
+  color: var(--primary-dark);
+}
+
+h1 {
+  font-size: var(--font-size-xxl);
+}
+
+h2 {
+  font-size: var(--font-size-xl);
+}
+
+h3 {
+  font-size: var(--font-size-lg);
+}
+
+p {
+  margin-bottom: var(--space-md);
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--primary-dark);
+}
+
+button {
+  cursor: pointer;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.full-height {
+  min-height: 100vh;
+}
+
+.card {
+  background-color: var(--neutral-lightest);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+
+/* Import Google Font - Montserrat */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+/* Material Icons */
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+/* Responsive breakpoints */
+@media (max-width: 576px) {
+  .container {
+    padding: 0 var(--space-sm);
+  }
+}
+
+/* Animation classes */
+.fade-in {
+  animation: fadeIn var(--transition-slow) forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.slide-up {
+  animation: slideUp var(--transition-normal) forwards;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Utility classes */
+.mt-1 { margin-top: var(--space-sm); }
+.mt-2 { margin-top: var(--space-md); }
+.mt-3 { margin-top: var(--space-lg); }
+.mb-1 { margin-bottom: var(--space-sm); }
+.mb-2 { margin-bottom: var(--space-md); }
+.mb-3 { margin-bottom: var(--space-lg); }

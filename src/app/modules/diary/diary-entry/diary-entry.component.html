@@ -1,0 +1,44 @@
+<mat-card class="diary-entry-card">
+    <div class="diary-header">
+      <div class="diary-date">
+        {{ getFormattedDate() }}
+      </div>
+      <div class="mood-indicator" [ngClass]="getMoodClass()">
+        {{ getMoodLabel() }}
+      </div>
+    </div>
+    
+    <mat-card-content>
+      <p class="diary-content">{{ entry.content }}</p>
+      
+      <div *ngIf="entry.questions && entry.questions.length > 0" class="diary-questions">
+        <div *ngFor="let qa of entry.questions" class="question-answer">
+          <p class="question">{{ qa.question }}</p>
+          <p class="answer">{{ qa.answer }}</p>
+        </div>
+      </div>
+      
+      <div class="feelings-container" *ngIf="entry.feelings && entry.feelings.length > 0">
+        <h3>Sentimentos</h3>
+        <mat-chip-listbox>
+          <mat-chip *ngFor="let feeling of entry.feelings">{{ feeling }}</mat-chip>
+        </mat-chip-listbox>
+      </div>
+      
+      <div class="activities-container" *ngIf="entry.activities && entry.activities.length > 0">
+        <h3>Atividades</h3>
+        <mat-chip-listbox>
+          <mat-chip *ngFor="let activity of entry.activities">{{ activity }}</mat-chip>
+        </mat-chip-listbox>
+      </div>
+    </mat-card-content>
+    
+    <mat-card-actions>
+      <button mat-icon-button color="primary" (click)="onEdit()">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" (click)="onDelete()">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>

@@ -1,0 +1,255 @@
+.page-title {
+    margin-bottom: var(--space-sm);
+  }
+  
+  .container {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  
+  .page-description {
+    color: var(--neutral-dark);
+    margin-bottom: var(--space-lg);
+    max-width: 800px;
+  }
+  
+  mat-tab-group {
+    margin-top: var(--space-lg);
+  }
+  
+  .exercises-grid,
+  .sounds-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--space-lg);
+    padding: var(--space-lg) 0;
+  }
+  
+  .exercise-card,
+  .sound-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  }
+  
+  .exercise-card:hover,
+  .sound-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .exercise-image,
+  .sound-image {
+    height: 180px;
+    overflow: hidden;
+  }
+  
+  .exercise-image img,
+  .sound-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-normal);
+  }
+  
+  .exercise-card:hover .exercise-image img,
+  .sound-card:hover .sound-image img {
+    transform: scale(1.05);
+  }
+  
+  .exercise-content,
+  .sound-content {
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  
+  .exercise-content h2,
+  .sound-content h2 {
+    margin-bottom: var(--space-sm);
+    font-size: var(--font-size-lg);
+  }
+  
+  .exercise-content p,
+  .sound-content p {
+    color: var(--neutral-dark);
+    margin-bottom: var(--space-md);
+    flex-grow: 1;
+  }
+  
+  .exercise-meta {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--space-md);
+    color: var(--neutral-dark);
+  }
+  
+  .duration {
+    display: flex;
+    align-items: center;
+    font-size: var(--font-size-sm);
+  }
+  
+  .duration mat-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    margin-right: var(--space-xs);
+  }
+  
+  .sound-player {
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+  }
+  
+  .play-button {
+    margin-right: var(--space-sm);
+  }
+  
+  .volume-slider {
+    flex-grow: 1;
+  }
+  
+  /* Exercise Modal */
+  .exercise-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-normal), visibility var(--transition-normal);
+  }
+  
+  .exercise-modal.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .modal-content {
+    width: 90%;
+    max-width: 600px;
+    background-color: white;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    transform: translateY(20px);
+    transition: transform var(--transition-normal);
+  }
+  
+  .exercise-modal.active .modal-content {
+    transform: translateY(0);
+  }
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-md);
+    background-color: var(--primary);
+    color: white;
+  }
+  
+  .modal-header h2 {
+    margin: 0;
+    color: white;
+  }
+  
+  .modal-body {
+    padding: var(--space-lg);
+  }
+  
+  /* Meditation Content */
+  .meditation-image,
+  .stretching-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-lg);
+  }
+  
+  .meditation-image img,
+  .stretching-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .meditation-timer,
+  .stretching-timer {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+  }
+  
+  .timer-display {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-bottom: var(--space-sm);
+  }
+  
+  .timer-progress {
+    height: 8px;
+  }
+  
+  .meditation-controls,
+  .stretching-controls {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+  }
+  
+  .control-button {
+    transform: scale(1.5);
+  }
+  
+  .meditation-instruction {
+    text-align: center;
+    font-style: italic;
+    color: var(--neutral-dark);
+  }
+  
+  /* Stretching Content */
+  .stretching-instructions {
+    margin-bottom: var(--space-lg);
+  }
+  
+  .stretching-instructions h3 {
+    margin-bottom: var(--space-sm);
+    color: var(--primary-dark);
+  }
+  
+  .stretching-instructions ol {
+    padding-left: var(--space-lg);
+  }
+  
+  .stretching-instructions li {
+    margin-bottom: var(--space-sm);
+  }
+  
+  @media (max-width: 768px) {
+    .exercises-grid,
+    .sounds-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .modal-content {
+      width: 95%;
+    }
+    
+    .timer-display {
+      font-size: 2rem;
+    }
+  }

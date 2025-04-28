@@ -1,0 +1,183 @@
+<div class="emergency-container">
+    <div class="emergency-header">
+      <div class="container">
+        <h1>Modo de Emergência</h1>
+        <p>Suporte rápido para momentos de crise</p>
+      </div>
+    </div>
+    
+    <div class="container emergency-content">
+      <div class="emergency-message">
+        <h2>Se você está em risco imediato, ligue:</h2>
+        <div class="emergency-phone">
+          <a href="tel:188" class="phone-button">
+            <mat-icon>call</mat-icon>
+            <span>188 - CVV</span>
+          </a>
+        </div>
+        <p class="emergency-description">
+          O Centro de Valorização da Vida oferece apoio emocional e prevenção do suicídio, 
+          atendendo voluntária e gratuitamente todas as pessoas que querem e precisam 
+          conversar, sob total sigilo, 24 horas por dia.
+        </p>
+      </div>
+      
+      <mat-card class="crisis-card">
+        <mat-card-header>
+          <mat-icon>favorite</mat-icon>
+          <mat-card-title>Respire Comigo</mat-card-title>
+        </mat-card-header>
+        
+        <mat-card-content>
+          <div class="breathing-circle-container">
+            <div class="breathing-circle">
+              <div class="breathing-text">{{ breathingText }}</div>
+            </div>
+          </div>
+          
+          <div class="breathing-instruction">
+            Respire junto com o círculo. Inspire quando ele expande, segure quando ele pausa e expire quando ele contrai.
+          </div>
+        </mat-card-content>
+      </mat-card>
+      
+      <div class="techniques-section">
+        <h2>Técnicas de Aterramento</h2>
+        <p>
+          Técnicas de aterramento ajudam a reconectar com o momento presente quando você se sente 
+          sobrecarregado, ansioso ou em pânico. Tente os exercícios abaixo:
+        </p>
+        
+        <div class="techniques-grid">
+          <mat-card class="technique-card">
+            <mat-card-header>
+              <mat-card-title>Técnica 5-4-3-2-1</mat-card-title>
+            </mat-card-header>
+            
+            <mat-card-content>
+              <p>Nomeie:</p>
+              <ul>
+                <li><strong>5</strong> coisas que você pode <strong>ver</strong></li>
+                <li><strong>4</strong> coisas que você pode <strong>tocar</strong></li>
+                <li><strong>3</strong> coisas que você pode <strong>ouvir</strong></li>
+                <li><strong>2</strong> coisas que você pode <strong>cheirar</strong></li>
+                <li><strong>1</strong> coisa que você pode <strong>provar</strong></li>
+              </ul>
+            </mat-card-content>
+          </mat-card>
+          
+          <mat-card class="technique-card">
+            <mat-card-header>
+              <mat-card-title>Contagem Regressiva</mat-card-title>
+            </mat-card-header>
+            
+            <mat-card-content>
+              <p>
+                Conte regressivamente a partir de 100, de 7 em 7 (100, 93, 86...). 
+                Esta técnica requer concentração e pode ajudar a desviar o foco da ansiedade.
+              </p>
+            </mat-card-content>
+          </mat-card>
+          
+          <mat-card class="technique-card">
+            <mat-card-header>
+              <mat-card-title>Contraste de Temperatura</mat-card-title>
+            </mat-card-header>
+            
+            <mat-card-content>
+              <p>
+                Segure um cubo de gelo ou coloque as mãos em água fria. A sensação intensa 
+                ajuda a interromper pensamentos de ansiedade e traz você de volta ao momento presente.
+              </p>
+            </mat-card-content>
+          </mat-card>
+          
+          <mat-card class="technique-card">
+            <mat-card-header>
+              <mat-card-title>Enraizamento</mat-card-title>
+            </mat-card-header>
+            
+            <mat-card-content>
+              <p>
+                Sente-se e concentre-se na sensação dos seus pés tocando o chão. 
+                Imagine raízes crescendo dos seus pés, conectando-o firmemente à terra.
+              </p>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+      
+      <mat-expansion-panel class="coping-panel">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-icon>tips_and_updates</mat-icon>
+            Frases de Afirmação
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        
+        <div class="affirmations-list">
+          <div class="affirmation-item">
+            "Isto é temporário. Vai passar."
+          </div>
+          <div class="affirmation-item">
+            "Eu já passei por momentos difíceis antes e consegui superar."
+          </div>
+          <div class="affirmation-item">
+            "Eu estou seguro(a) agora."
+          </div>
+          <div class="affirmation-item">
+            "Estou fazendo o melhor que posso, e isso é suficiente."
+          </div>
+          <div class="affirmation-item">
+            "Eu posso lidar com estes sentimentos."
+          </div>
+          <div class="affirmation-item">
+            "Respiro fundo. Este momento vai passar."
+          </div>
+        </div>
+      </mat-expansion-panel>
+      
+      <mat-expansion-panel class="coping-panel">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-icon>menu_book</mat-icon>
+            Estratégias para Crises
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        
+        <div class="strategies-list">
+          <div class="strategy-item">
+            <h3>Esteja em um lugar seguro</h3>
+            <p>
+              Se possível, vá para um local tranquilo e seguro, longe de estímulos 
+              que possam agravar a ansiedade.
+            </p>
+          </div>
+          
+          <div class="strategy-item">
+            <h3>Foque no presente</h3>
+            <p>
+              A ansiedade muitas vezes vem de pensamentos sobre o futuro. 
+              Tente focar no momento presente, um minuto de cada vez.
+            </p>
+          </div>
+          
+          <div class="strategy-item">
+            <h3>Contate alguém de confiança</h3>
+            <p>
+              Falar com um amigo, familiar ou profissional de saúde mental pode ajudar. 
+              Você não precisa lidar com isso sozinho.
+            </p>
+          </div>
+          
+          <div class="strategy-item">
+            <h3>Exercício físico leve</h3>
+            <p>
+              Uma caminhada curta ou alongamentos simples podem ajudar a liberar a tensão 
+              do corpo e reduzir os sintomas físicos da ansiedade.
+            </p>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </div>
+  </div>

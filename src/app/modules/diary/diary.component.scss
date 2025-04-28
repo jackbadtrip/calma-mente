@@ -1,0 +1,62 @@
+.container {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.diary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .page-title {
+    margin: 0;
+  }
+  
+  .page-description {
+    color: var(--neutral-dark);
+    margin-bottom: var(--space-lg);
+    max-width: 800px;
+  }
+  
+  .diary-content {
+    margin-top: var(--space-lg);
+  }
+  
+  .no-entries {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .no-entries mat-card {
+    padding: var(--space-xl);
+  }
+  
+  .no-entries h2 {
+    margin-bottom: var(--space-md);
+    color: var(--primary-dark);
+  }
+  
+  .no-entries p {
+    margin-bottom: var(--space-lg);
+    color: var(--neutral-dark);
+  }
+  
+  .entries-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+  
+  .loading-spinner {
+    display: flex;
+    justify-content: center;
+    padding: var(--space-xl) 0;
+  }
+  
+  @media (min-width: 768px) {
+    .entries-list {
+      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    }
+  }

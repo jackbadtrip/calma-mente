@@ -1,0 +1,98 @@
+<div class="diary-form-container">
+  <h2 mat-dialog-title>{{ isEditMode ? 'Editar Registro' : 'Novo Registro do Diário' }}</h2>
+  
+  <form [formGroup]="diaryForm" (ngSubmit)="onSubmit()">
+    <mat-dialog-content>
+      <h3 class="mood-heading">Como você está se sentindo hoje?</h3>
+      
+      <div class="mood-selector">
+        <div class="mood-buttons">
+          <button 
+            type="button"
+            *ngFor="let option of moodOptions" 
+            mat-raised-button
+            [class.selected]="diaryForm.get('mood')?.value === option.value"
+            (click)="selectMood(option.value)"
+            class="mood-button">
+            <span class="mood-emoji">{{ option.emoji }}</span><br>
+            <span class="mood-label">{{ option.label }}</span>
+          </button>
+        </div>
+      </div>
+      
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Descreva seu dia</mat-label>
+        <textarea 
+          matInput 
+          formControlName="content" 
+          placeholder="Como foi seu dia hoje? O que você está sentindo?" 
+          rows="4"></textarea>
+        <mat-error *ngIf="diaryForm.get('content')?.hasError('required')">
+          Por favor, escreva sobre o seu dia
+        </mat-error>
+      </mat-form-field>
+      
+      <div formArrayName="questions">
+        <div *ngFor="let question of questions.controls; let i = index" [formGroupName]="i" class="question-item">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>{{ getQuestionText(i) }}</mat-label>
+            <textarea matInput formControlName="answer" rows="2"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+      
+      <div class="chips-container">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Sentimentos</mat-label>
+          <mat-chip-grid #feelingsChipGrid formControlName="feelings">
+            <mat-chip-row 
+              *ngFor="let feeling of feelings"
+              (removed)="removeFeeling(feeling)">
+              {{feeling}}
+              <button matChipRemove>
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </mat-chip-row>
+            <input 
+              placeholder="Novo sentimento..."
+              [matChipInputFor]="feelingsChipGrid"
+              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+              (matChipInputTokenEnd)="addFeeling($event)">
+          </mat-chip-grid>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Atividades</mat-label>
+          <mat-chip-grid #activitiesChipGrid formControlName="activities">
+            <mat-chip-row 
+              *ngFor="let activity of activities"
+              (removed)="removeActivity(activity)">
+              {{activity}}
+              <button matChipRemove>
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </mat-chip-row>
+            <input 
+              placeholder="Nova atividade..."
+              [matChipInputFor]="activitiesChipGrid"
+              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+              (matChipInputTokenEnd)="addActivity($event)">
+          </mat-chip-grid>
+        </mat-form-field>
+      </div>
+      
+    </mat-dialog-content>
+    
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close type="button">Cancelar</button>
+      <button 
+        mat-raised-button 
+        color="primary" 
+        type="submit" 
+        [disabled]="diaryForm.invalid || isSubmitting">
+        <mat-spinner diameter="20" *ngIf="isSubmitting"></mat-spinner>
+        <span *ngIf="!isSubmitting">{{ isEditMode ? 'Atualizar' : 'Salvar' }}</span>
+      </button>
+    </mat-dialog-actions>
+  </form>
+</div>

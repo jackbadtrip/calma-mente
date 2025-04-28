@@ -1,0 +1,115 @@
+.page-title {
+    margin-bottom: var(--space-sm);
+  }
+
+  .container {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  
+  .page-description {
+    color: var(--neutral-dark);
+    margin-bottom: var(--space-lg);
+    max-width: 800px;
+  }
+  
+  .coming-soon-container {
+    margin-top: var(--space-xl);
+  }
+  
+  .coming-soon-card {
+    padding: var(--space-xl);
+    text-align: center;
+    margin-bottom: var(--space-xl);
+    border-left: 4px solid var(--primary);
+  }
+  
+  .coming-soon-icon {
+    font-size: 48px;
+    height: 48px;
+    width: 48px;
+    margin-bottom: var(--space-md);
+    color: var(--primary);
+  }
+  
+  .coming-soon-card h2 {
+    margin-bottom: var(--space-md);
+    color: var(--primary-dark);
+  }
+  
+  .coming-soon-card p {
+    margin-bottom: var(--space-md);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .coming-soon-card ul {
+    text-align: left;
+    max-width: 600px;
+    margin: 0 auto var(--space-lg);
+    padding-left: var(--space-xl);
+  }
+  
+  .coming-soon-card li {
+    margin-bottom: var(--space-sm);
+  }
+  
+  .resources-section {
+    margin-top: var(--space-xl);
+  }
+  
+  .resources-section h2 {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+    color: var(--primary-dark);
+  }
+  
+  .resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-lg);
+  }
+  
+  .resource-card {
+    padding: var(--space-lg);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  }
+  
+  .resource-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .resource-icon {
+    font-size: 36px;
+    height: 36px;
+    width: 36px;
+    margin-bottom: var(--space-md);
+    color: var(--primary);
+  }
+  
+  .resource-card h3 {
+    margin-bottom: var(--space-md);
+    color: var(--primary-dark);
+  }
+  
+  .resource-card p {
+    margin-bottom: var(--space-lg);
+    flex-grow: 1;
+  }
+  
+  @media (max-width: 768px) {
+    .coming-soon-card {
+      padding: var(--space-lg);
+    }
+    
+    .resources-grid {
+      grid-template-columns: 1fr;
+    }
+  }

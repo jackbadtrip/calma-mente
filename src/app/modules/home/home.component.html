@@ -1,0 +1,129 @@
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <h1 class="fade-in">Bem-vindo à Calma<span class="accent">Mente</span></h1>
+      <p class="fade-in">Uma plataforma digital projetada para oferecer suporte emocional às pessoas que sofrem de
+        transtornos de ansiedade.</p>
+      <div class="hero-buttons fade-in">
+        <a class="btn-start" mat-stroked-button color="primary" routerLink="/auth/register"
+          *ngIf="!(isLoggedIn$ | async)">Comece Agora</a>
+        <a mat-flat-button color="accent" routerLink="/emergency"><mat-icon>emergency</mat-icon> Modo de Emergência</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="anxiety-section">
+  <div class="container">
+    <h2 class="text-center">Identificando a Ansiedade</h2>
+    <p class="text-center subtitle">Conheça os sinais e aprenda a identificar momentos de ansiedade</p>
+    
+    <div class="anxiety-slider">
+      <div class="slides-container" [style.transform]="'translateX(' + (-currentSlide * 100) + '%)'">
+        <div class="slide" *ngFor="let slide of anxietySlides">
+          <div class="slide-content">
+            <div class="slide-image">
+              <img [src]="slide.imageUrl" [alt]="slide.title">
+            </div>
+            <div class="slide-text">
+              <h3>{{ slide.title }}</h3>
+              <p>{{ slide.description }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="slider-controls">
+        <button mat-icon-button (click)="previousSlide()" [disabled]="currentSlide === 0">
+          <mat-icon>chevron_left</mat-icon>
+        </button>
+        <div class="slider-dots">
+          <span 
+            *ngFor="let slide of anxietySlides; let i = index" 
+            class="dot"
+            [class.active]="currentSlide === i"
+            (click)="goToSlide(i)">
+          </span>
+        </div>
+        <button mat-icon-button (click)="nextSlide()" [disabled]="currentSlide === anxietySlides.length - 1">
+          <mat-icon>chevron_right</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="features">
+  <div class="container">
+    <h1 class="text-center" style="font-weight: bold;">Nossos Recursos</h1>
+    <p class="text-center subtitle">Ferramentas desenvolvidas para ajudar no gerenciamento da ansiedade</p>
+
+    <div class="feature-cards">
+      <mat-card class="feature-card slide-up">
+        <mat-icon class="feature-icon">air</mat-icon>
+        <h2>Respiração Guiada</h2>
+        <p>Técnicas de respiração para ajudar a acalmar a mente e reduzir os sintomas de ansiedade.</p>
+        <a mat-link-button color="primary" routerLink="/breathing">Experimente</a>
+      </mat-card>
+
+      <mat-card class="feature-card slide-up">
+        <mat-icon class="feature-icon">book</mat-icon>
+        <h2>Diário Emocional</h2>
+        <p>Registre seus sentimentos e emoções, ajudando no autoconhecimento e monitoramento do seu estado emocional.
+        </p>
+        <a mat-link-button color="primary" routerLink="/diary">Experimente</a>
+      </mat-card>
+
+      <mat-card class="feature-card slide-up">
+        <mat-icon class="feature-icon">spa</mat-icon>
+        <h2>Relaxamento</h2>
+        <p>Meditações, alongamentos e técnicas de relaxamento muscular para reduzir a tensão e a ansiedade.</p>
+        <a mat-link-button color="primary" routerLink="/relaxation">Experimente</a>
+      </mat-card>
+
+      <mat-card class="feature-card slide-up">
+        <mat-icon class="feature-icon">person</mat-icon>
+        <h2>Ajuda Profissional</h2>
+        <p>Contato com psicólogos ou terapeutas parceiros para suporte profissional quando necessário.</p>
+        <a mat-link-button color="primary" routerLink="/professional">Saiba Mais</a>
+      </mat-card>
+    </div>
+  </div>
+</section>
+
+<section class="emergency-section">
+  <div class="container">
+    <div class="emergency-content">
+      <h2 style="font-weight: bold;">Modo de Emergência</h2>
+      <p>Para momentos de crise, disponibilizamos um recurso que oferece suporte rápido, técnicas de aterramento,
+        mensagens calmantes e vídeos de apoio.</p>
+      <a mat-raised-button color="accent" routerLink="/emergency">
+        <mat-icon>emergency</mat-icon>
+        Acessar Modo de Emergência
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="about-section">
+  <div style="display: flex; flex-direction: row; align-items: center; justify-content: center; max-width: 60vw;">
+    <div class="container">
+      <div class="about-content">
+        <h1>Sobre o CalmaMente</h1>
+        <div class="about-text">
+          <p>
+            O CalmaMente é uma plataforma digital projetada para oferecer suporte emocional às pessoas que sofrem de transtornos de ansiedade.
+            Ele proporciona recursos interativos como técnicas de respiração guiada, um diário emocional para registro de sentimentos,
+            exercícios de relaxamento e a possibilidade de entrar em contato com profissionais da saúde mental.
+          </p>
+          <p>
+            O transtorno de ansiedade afeta milhões de pessoas e muitas delas não têm acesso imediato a suporte emocional.
+            Nossa proposta é oferecer uma ferramenta acessível, acolhedora e prática para ajudar usuários a lidarem com momentos de crise,
+            desenvolverem o autoconhecimento e encontrarem apoio psicológico com segurança e discrição.
+          </p>
+        </div>
+      </div>
+    </div>
+    <img src="assets/img/logo.png" height="300" />
+  </div>
+</section>

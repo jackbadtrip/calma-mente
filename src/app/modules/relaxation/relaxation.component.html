@@ -1,0 +1,137 @@
+<div class="container">
+    <h1 class="page-title">Exercícios de Relaxamento</h1>
+    <p class="page-description">
+      Explore meditações, alongamentos e técnicas de relaxamento para reduzir a tensão e ansiedade.
+    </p>
+    
+    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" animationDuration="0ms">
+      <mat-tab label="Meditações">
+        <div class="exercises-grid">
+          <mat-card *ngFor="let exercise of getMeditationExercises()" class="exercise-card">
+            <div class="exercise-image">
+              <img [src]="exercise.imageUrl" [alt]="exercise.title">
+            </div>
+            <div class="exercise-content">
+              <h2>{{ exercise.title }}</h2>
+              <p>{{ exercise.description }}</p>
+              <div class="exercise-meta">
+                <span class="duration">
+                  <mat-icon>timer</mat-icon> {{ formatDuration(exercise.duration) }}
+                </span>
+              </div>
+              <button mat-raised-button color="primary" (click)="startExercise(exercise)">
+                <mat-icon>play_arrow</mat-icon> Iniciar
+              </button>
+            </div>
+          </mat-card>
+        </div>
+      </mat-tab>
+      
+      <mat-tab label="Alongamentos">
+        <div class="exercises-grid">
+          <mat-card *ngFor="let exercise of getStretchingExercises()" class="exercise-card">
+            <div class="exercise-image">
+              <img [src]="exercise.imageUrl" [alt]="exercise.title">
+            </div>
+            <div class="exercise-content">
+              <h2>{{ exercise.title }}</h2>
+              <p>{{ exercise.description }}</p>
+              <div class="exercise-meta">
+                <span class="duration">
+                  <mat-icon>timer</mat-icon> {{ formatDuration(exercise.duration) }}
+                </span>
+              </div>
+              <button mat-raised-button color="primary" (click)="startExercise(exercise)">
+                <mat-icon>play_arrow</mat-icon> Iniciar
+              </button>
+            </div>
+          </mat-card>
+        </div>
+      </mat-tab>
+      
+      <mat-tab label="Sons Relaxantes">
+        <div class="sounds-grid">
+          <mat-card *ngFor="let sound of relaxingSounds" class="sound-card">
+            <div class="sound-image">
+              <img [src]="sound.imageUrl" [alt]="sound.name">
+            </div>
+            <div class="sound-content">
+              <h2>{{ sound.name }}</h2>
+              <p>{{ sound.description }}</p>
+              <div class="sound-player">
+                <button mat-icon-button color="primary" (click)="toggleSound(sound)" class="play-button">
+                  <mat-icon>{{ isPlayingSound(sound) ? 'pause' : 'play_arrow' }}</mat-icon>
+                </button>
+                <mat-slider min="0" max="1" step="0.01" class="volume-slider" [disabled]="!isPlayingSound(sound)">
+                  <input matSliderThumb [(ngModel)]="soundVolume" (ngModelChange)="updateVolume($event)">
+                </mat-slider>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+    
+    <!-- Exercise Modal -->
+    <div class="exercise-modal" *ngIf="activeExercise" [class.active]="activeExercise">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>{{ activeExercise?.title }}</h2>
+          <button mat-icon-button (click)="closeExercise()">
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+        
+        <div class="modal-body">
+          <div *ngIf="activeExercise?.type === 'meditation'" class="meditation-content">
+            <div class="meditation-image">
+              <img [src]="activeExercise?.imageUrl" [alt]="activeExercise?.title">
+            </div>
+            
+            <div class="meditation-timer">
+              <div class="timer-display">{{ formatTime(remainingTime) }}</div>
+              <mat-progress-bar mode="determinate" [value]="progressValue" class="timer-progress"></mat-progress-bar>
+            </div>
+            
+            <div class="meditation-controls">
+              <button mat-icon-button color="primary" (click)="toggleTimer()" class="control-button">
+                <mat-icon>{{ isTimerRunning ? 'pause' : 'play_arrow' }}</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" (click)="resetTimer()" class="control-button">
+                <mat-icon>replay</mat-icon>
+              </button>
+            </div>
+            
+            <p class="meditation-instruction">Feche os olhos, respire profundamente e mantenha o foco na sua respiração.</p>
+          </div>
+          
+          <div *ngIf="activeExercise?.type === 'stretching'" class="stretching-content">
+            <div class="stretching-image">
+              <img [src]="activeExercise?.imageUrl" [alt]="activeExercise?.title">
+            </div>
+            
+            <div class="stretching-instructions">
+              <h3>Instruções:</h3>
+              <ol>
+                <li *ngFor="let instruction of activeExercise?.instructions">{{ instruction }}</li>
+              </ol>
+            </div>
+            
+            <div class="stretching-timer">
+              <div class="timer-display">{{ formatTime(remainingTime) }}</div>
+              <mat-progress-bar mode="determinate" [value]="progressValue" class="timer-progress"></mat-progress-bar>
+            </div>
+            
+            <div class="stretching-controls">
+              <button mat-icon-button color="primary" (click)="toggleTimer()" class="control-button">
+                <mat-icon>{{ isTimerRunning ? 'pause' : 'play_arrow' }}</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" (click)="resetTimer()" class="control-button">
+                <mat-icon>replay</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

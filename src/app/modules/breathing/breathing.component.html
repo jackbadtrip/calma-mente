@@ -1,0 +1,73 @@
+<div class="container">
+    <h1 class="page-title">Respiração Guiada</h1>
+    <p class="page-description">
+      Pratique exercícios de respiração para acalmar sua mente e reduzir os sintomas de ansiedade. 
+      Escolha uma técnica abaixo e siga as instruções visuais.
+    </p>
+    
+    <div class="exercise-selection">
+      <h2>Escolha um Exercício</h2>
+      <div class="exercise-cards">
+        <mat-card *ngFor="let exercise of breathingExercises" class="exercise-card" 
+                  [class.selected]="selectedExercise?.id === exercise.id"
+                  (click)="selectExercise(exercise)">
+          <h3>{{ exercise.name }}</h3>
+          <p>{{ exercise.description }}</p>
+        </mat-card>
+      </div>
+    </div>
+    
+    <div class="breathing-exercise" *ngIf="selectedExercise">
+      <mat-card class="exercise-container">
+        <h2>{{ selectedExercise.name }}</h2>
+        <p class="exercise-description">{{ selectedExercise.description }}</p>
+        
+        <div class="breathing-visual" [class.animate]="isExerciseActive">
+          <div class="breathing-circle" 
+              [style.transform]="breathingState === 'inhale' ? 'scale(1.5)' : 
+                                 breathingState === 'exhale' ? 'scale(1.0)' : 
+                                 'scale(' + (breathingState === 'hold' ? 1.5 : 1.0) + ')'">
+            <div class="breathing-inner-circle">
+              <span class="breathing-text">{{ breathingStateText }}</span>
+              <span class="breathing-timer">{{ timerDisplay }}</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="progress-container">
+          <div class="progress-bar">
+            <div class="progress-indicator" [style.width.%]="progressPercentage"></div>
+          </div>
+          <div class="progress-text">
+            {{ currentRepetition }} de {{ selectedExercise.repetitions }} ciclos
+          </div>
+        </div>
+        
+        <div class="exercise-controls">
+          <button mat-raised-button color="primary" (click)="toggleExercise()" class="control-btn">
+            <mat-icon>{{ isExerciseActive ? 'pause' : 'play_arrow' }}</mat-icon>
+            {{ isExerciseActive ? 'Pausar' : 'Iniciar' }}
+          </button>
+          <button mat-raised-button color="warn" (click)="resetExercise()" class="control-btn">
+            <mat-icon>refresh</mat-icon>
+            Reiniciar
+          </button>
+        </div>
+      </mat-card>
+    </div>
+    
+    <div class="breathing-info" *ngIf="!selectedExercise">
+      <mat-card>
+        <h2>Benefícios da Respiração Consciente</h2>
+        <ul>
+          <li>Reduz os níveis de estresse e ansiedade</li>
+          <li>Estabiliza a frequência cardíaca e pressão arterial</li>
+          <li>Melhora a concentração e clareza mental</li>
+          <li>Fortalece o sistema imunológico</li>
+          <li>Promove melhor qualidade de sono</li>
+        </ul>
+        
+        <p class="info-cta">Selecione um exercício acima para começar sua prática de respiração guiada.</p>
+      </mat-card>
+    </div>
+  </div>

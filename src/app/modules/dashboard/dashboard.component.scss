@@ -1,0 +1,160 @@
+.container {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.page-title {
+    margin-bottom: var(--space-sm);
+  }
+  
+  .page-description {
+    color: var(--neutral-dark);
+    margin-bottom: var(--space-lg);
+    max-width: 800px;
+  }
+  
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+    margin-top: var(--space-xl);
+  }
+  
+  .mood-chart-card,
+  .activity-chart-card {
+    grid-column: span 1;
+  }
+  
+  .stats-card,
+  .tips-card {
+    grid-column: span 1;
+  }
+  
+  mat-card-header {
+    margin-bottom: var(--space-md);
+  }
+  
+  .chart-container {
+    height: 300px;
+    position: relative;
+  }
+  
+  .loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+  }
+  
+  .loading-container p {
+    margin-top: var(--space-md);
+    color: var(--neutral-dark);
+  }
+  
+  .no-data-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    text-align: center;
+    padding: var(--space-lg);
+  }
+  
+  .no-data-icon {
+    font-size: 48px;
+    height: 48px;
+    width: 48px;
+    margin-bottom: var(--space-md);
+    color: var(--neutral-dark);
+  }
+  
+  .no-data-container h3 {
+    margin-bottom: var(--space-sm);
+    color: var(--primary-dark);
+  }
+  
+  .no-data-container p {
+    margin-bottom: var(--space-lg);
+    color: var(--neutral-dark);
+  }
+  
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+  }
+  
+  .stat-item {
+    text-align: center;
+    padding: var(--space-md);
+    background-color: var(--neutral-light);
+    border-radius: var(--radius-md);
+  }
+  
+  .stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-bottom: var(--space-xs);
+  }
+  
+  .stat-label {
+    font-size: var(--font-size-sm);
+    color: var(--neutral-dark);
+  }
+  
+  .tips-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  
+  .tip-item {
+    display: flex;
+    gap: var(--space-md);
+    padding: var(--space-md);
+    background-color: var(--neutral-light);
+    border-radius: var(--radius-md);
+    align-items: flex-start;
+  }
+  
+  .tip-icon {
+    color: var(--primary);
+    font-size: 24px;
+    height: 24px;
+    width: 24px;
+  }
+  
+  .tip-content h3 {
+    margin: 0 0 var(--space-xs);
+    font-size: var(--font-size-md);
+    color: var(--primary-dark);
+  }
+  
+  .tip-content p {
+    margin: 0;
+    font-size: var(--font-size-sm);
+    color: var(--neutral-dark);
+  }
+  
+  @media (max-width: 992px) {
+    .dashboard-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .mood-chart-card,
+    .activity-chart-card,
+    .stats-card,
+    .tips-card {
+      grid-column: span 1;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .stats-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+    }
+  }

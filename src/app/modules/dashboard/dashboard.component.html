@@ -1,0 +1,126 @@
+<div class="container">
+    <h1 class="page-title">Dashboard</h1>
+    <p class="page-description">
+      Visualize seu progresso emocional e acompanhe padrões no seu bem-estar ao longo do tempo.
+    </p>
+    
+    <div class="dashboard-grid">
+      <mat-card class="mood-chart-card">
+        <mat-card-header>
+          <mat-card-title>Humor da Semana</mat-card-title>
+          <mat-card-subtitle>Acompanhe a evolução do seu humor nos últimos 7 dias</mat-card-subtitle>
+        </mat-card-header>
+        
+        <mat-card-content *ngIf="!isLoading; else loadingTemplate">
+          <div class="chart-container" *ngIf="moodData.length > 0; else noDataTemplate">
+            <canvas baseChart
+              [type]="'line'"
+              [data]="moodChartData"
+              [options]="moodChartOptions"
+              [legend]="true">
+            </canvas>
+          </div>
+        </mat-card-content>
+      </mat-card>
+      
+      <mat-card class="activity-chart-card">
+        <mat-card-header>
+          <mat-card-title>Atividades Realizadas</mat-card-title>
+          <mat-card-subtitle>Veja quais atividades você praticou recentemente</mat-card-subtitle>
+        </mat-card-header>
+        
+        <mat-card-content *ngIf="!isLoading; else loadingTemplate">
+          <div class="chart-container" *ngIf="moodData.length > 0; else noDataTemplate">
+            <canvas baseChart
+              [type]="'doughnut'"
+              [data]="activityChartData"
+              [options]="activityChartOptions"
+              [legend]="true">
+            </canvas>
+          </div>
+        </mat-card-content>
+      </mat-card>
+      
+      <mat-card class="stats-card">
+        <mat-card-header>
+          <mat-card-title>Estatísticas</mat-card-title>
+          <mat-card-subtitle>Um resumo da sua jornada na CalmaMente</mat-card-subtitle>
+        </mat-card-header>
+        
+        <mat-card-content *ngIf="!isLoading; else loadingTemplate">
+          <div class="stats-grid" *ngIf="moodData.length > 0; else noDataTemplate">
+            <div class="stat-item">
+              <div class="stat-value">{{ entriesCount }}</div>
+              <div class="stat-label">Entradas no Diário</div>
+            </div>
+            
+            <div class="stat-item">
+              <div class="stat-value">{{ averageMood | number:'1.1-1' }}</div>
+              <div class="stat-label">Humor Médio</div>
+            </div>
+            
+            <div class="stat-item">
+              <div class="stat-value">{{ meditationMinutes }}</div>
+              <div class="stat-label">Minutos Meditando</div>
+            </div>
+            
+            <div class="stat-item">
+              <div class="stat-value">{{ journalStreak }}</div>
+              <div class="stat-label">Sequência de Dias</div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+      
+      <mat-card class="tips-card">
+        <mat-card-header>
+          <mat-card-title>Dicas Personalizadas</mat-card-title>
+          <mat-card-subtitle>Baseadas no seu histórico recente</mat-card-subtitle>
+        </mat-card-header>
+        
+        <mat-card-content>
+          <div class="tips-list">
+            <div class="tip-item">
+              <mat-icon class="tip-icon">lightbulb</mat-icon>
+              <div class="tip-content">
+                <h3>Experimente Meditação Diária</h3>
+                <p>Apenas 5 minutos de meditação por dia podem reduzir significativamente a ansiedade.</p>
+              </div>
+            </div>
+            
+            <div class="tip-item">
+              <mat-icon class="tip-icon">local_florist</mat-icon>
+              <div class="tip-content">
+                <h3>Respiração Profunda</h3>
+                <p>Pratique a técnica 4-7-8 quando sentir ansiedade aumentando.</p>
+              </div>
+            </div>
+            
+            <div class="tip-item">
+              <mat-icon class="tip-icon">self_improvement</mat-icon>
+              <div class="tip-content">
+                <h3>Alongamento Regular</h3>
+                <p>Pequenas pausas para alongar durante o dia ajudam a reduzir a tensão muscular.</p>
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    
+    <ng-template #loadingTemplate>
+      <div class="loading-container">
+        <mat-spinner diameter="40"></mat-spinner>
+        <p>Carregando dados...</p>
+      </div>
+    </ng-template>
+    
+    <ng-template #noDataTemplate>
+      <div class="no-data-container">
+        <mat-icon class="no-data-icon">sentiment_neutral</mat-icon>
+        <h3>Sem dados suficientes</h3>
+        <p>Continue utilizando o diário emocional para ver estatísticas aqui.</p>
+        <button mat-raised-button color="primary" routerLink="/diary">Ir para o Diário</button>
+      </div>
+    </ng-template>
+  </div>

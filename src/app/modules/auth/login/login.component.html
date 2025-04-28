@@ -1,0 +1,41 @@
+<div class="auth-container">
+    <mat-card class="auth-card">
+      <div class="auth-header">
+        <h2>Login</h2>
+        <p>Entre na sua conta CalmaMente</p>
+      </div>
+      
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" type="email" placeholder="seu@email.com">
+          <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+            Email é obrigatório
+          </mat-error>
+          <mat-error *ngIf="loginForm.get('email')?.hasError('email')">
+            Digite um email válido
+          </mat-error>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Senha</mat-label>
+          <input matInput formControlName="password" [type]="hidePassword ? 'password' : 'text'">
+          <button type="button" mat-icon-button matSuffix (click)="hidePassword = !hidePassword">
+            <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+            Senha é obrigatória
+          </mat-error>
+        </mat-form-field>
+        
+        <button mat-raised-button color="primary" type="submit" class="full-width submit-btn" [disabled]="loginForm.invalid || isLoading">
+          <mat-spinner diameter="20" *ngIf="isLoading"></mat-spinner>
+          <span *ngIf="!isLoading">Entrar</span>
+        </button>
+      </form>
+      
+      <div class="auth-footer">
+        <p>Não tem uma conta? <a routerLink="/auth/register">Cadastre-se</a></p>
+      </div>
+    </mat-card>
+  </div>

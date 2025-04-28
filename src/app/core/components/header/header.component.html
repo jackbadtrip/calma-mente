@@ -1,0 +1,50 @@
+<header class="header">
+    <mat-toolbar color="primary">
+      <div class="container header-container">
+        <a routerLink="/" class="logo" style="display: flex; align-items: center; justify-content: center;">
+          <img src="../../../../assets/img/logo_sem_nome.png" width="64"/>
+          <h2 style="margin-left: 5px;">CalmaMente</h2>
+        </a>
+        
+        <button mat-icon-button class="mobile-menu-btn" (click)="toggleMobileMenu()">
+          <mat-icon>{{ isMobileMenuOpen ? 'close' : 'menu' }}</mat-icon>
+        </button>
+        
+        <nav class="main-nav" [class.open]="isMobileMenuOpen">
+          <ng-container *ngIf="isLoggedIn$ | async; else authLinks">
+            <a mat-button routerLink="/diary" routerLinkActive="active">Diário</a>
+            <a mat-button routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+            <a mat-button routerLink="/breathing" routerLinkActive="active">Respiração</a>
+            <a mat-button routerLink="/relaxation" routerLinkActive="active">Relaxamento</a>
+            <a mat-button routerLink="/professional" routerLinkActive="active">Ajuda Profissional</a>
+            
+            <button mat-raised-button color="accent" class="emergency-btn" routerLink="/emergency">
+              <mat-icon>emergency</mat-icon> EMERGÊNCIA
+            </button>
+            
+            <button mat-icon-button [matMenuTriggerFor]="userMenu" class="user-menu-btn">
+              <mat-icon>account_circle</mat-icon>
+            </button>
+            <mat-menu #userMenu="matMenu">
+              <div class="user-info" *ngIf="currentUser$ | async as user">
+                <p>{{ user.name }}</p>
+                <small>{{ user.email }}</small>
+              </div>
+              <button mat-menu-item (click)="logout()">
+                <mat-icon>exit_to_app</mat-icon>
+                <span>Sair</span>
+              </button>
+            </mat-menu>
+          </ng-container>
+          
+          <ng-template #authLinks>
+            <a mat-button routerLink="/auth/login" routerLinkActive="active">Login</a>
+            <a mat-button routerLink="/auth/register" routerLinkActive="active">Cadastre-se</a>
+            <button mat-raised-button color="accent" class="emergency-btn" routerLink="/emergency">
+              <mat-icon>emergency</mat-icon> EMERGÊNCIA
+            </button>
+          </ng-template>
+        </nav>
+      </div>
+    </mat-toolbar>
+  </header>
